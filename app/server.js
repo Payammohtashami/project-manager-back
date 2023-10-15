@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
-const { AllRoutes } = require('./routers/router');
+const AllRouters = require('./routers/router');
 
 module.exports = class Application {
     #app = express();
@@ -50,11 +50,6 @@ module.exports = class Application {
         });
     };
     createRoutes(){
-        this.#app.get('/', (req, res, next) => {
-            res.send({
-                message: 'welcome to express application!',
-            })
-        });
-        this.#app.use(AllRoutes);
+        this.#app.use(AllRouters)
     };
 }

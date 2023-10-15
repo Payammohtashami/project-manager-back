@@ -1,0 +1,11 @@
+###register requests
+Post http://localhost:4010/auth/register 
+Content-Type: application/json
+
+{
+    "username": "xxx",
+    "mobile": "0910123456",
+    "email": "test@gmail.com",
+    "password": "123456",
+    "confirm_password": "123456"
+} 

@@ -1,13 +1,14 @@
 class AuthController{
-    register(){
+    register(req, res, next){
+        const { username, password, email, mobile } = req.body;
+        return res.json(req);
+    };
+
+    login(req, res, next){
 
     };
 
-    login(){
-
-    };
-
-    resetPassword(){
+    resetPassword(req, res, next){
 
     };
 };
