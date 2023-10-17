@@ -4,13 +4,13 @@ const UserSchema = new mongoose.Schema(
     {
         first_name: {type: String},
         last_name: {type: String},
-        userName: {type: String, required: true, unique: true},
+        username: {type: String, required: true, unique: true},
         mobile: {type: String, required: true, unique: true},
-        role: {type: String, default: ['USER']},
+        role: {type: [String], default: ['USER']},
         email: {type: String, required: true, unique: true},
         password: {type: String, unique: true},
-        skills: {type: String, default: []},
-        teams: {type: String, default: []},
+        skills: {type: [String], default: []},
+        teams: {type: [mongoose.Types.ObjectId], default: []},
     },
     {
         timestamps: true

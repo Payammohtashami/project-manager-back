@@ -14,8 +14,8 @@ module.exports = class Application {
     };
     configApplication(){
         const path = require('path');
-        this.#app.use(express.json());
         this.#app.use(morgan('dev'));
+        this.#app.use(express.json());
         this.#app.use(express.urlencoded({extended: true}));
         this.#app.use(express.static(path.join(__dirname, '..', 'public')));
     };
@@ -50,6 +50,11 @@ module.exports = class Application {
         });
     };
     createRoutes(){
-        this.#app.use(AllRouters)
+        this.#app.get('/', (req, res, next) => {
+            res.send({
+                message: 'welcome to express application!',
+            })
+        });
+        this.#app.use(AllRouters);
     };
-}
+};
