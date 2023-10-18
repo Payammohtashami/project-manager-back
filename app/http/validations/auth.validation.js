@@ -11,7 +11,7 @@ function registerValidation(){
                     if(!!user) throw 'نام کاربری وارد شده تکراری می باشد'
                     return true;
                 } else throw 'نام کاربری صحیح نمی باشد';
-            } else throw 'نام کاربر نمی تواند خالی باشد'
+            } else throw 'نام کاربر نمی تواند خالی باشد';
         }),
         body('email').isEmail().withMessage('ایمیل وارد شده صحیح نمی باشد').custom(async (value, ctx) => {
             const user = await UserModel.findOne({email: value});
@@ -33,6 +33,23 @@ function registerValidation(){
     ];
 };
 
+function loginValidation(){
+    return [
+        body('username').notEmpty().withMessage('نام کاربری نمی تواند خالی باشد').custom(async (value, ctx) => {
+            if(value) {
+                const usernameRegex = /^[a-z]+[a-z0-9\_]/gi;
+                if(usernameRegex.test(value)){
+                    return true;
+                } else throw 'نام کاربری صحیح نمی باشد';
+            } else throw 'نام کاربر نمی تواند خالی باشد';
+        }),
+        body('password').isLength({min: 6, max: 32}).withMessage('رمز عبور حداقل باید 6 و حداکثر باید 32 کاراکتر باشد').custom((value, ctx) => {
+            if(!value) throw 'رمز عبور نمی تواند خالی باشد';
+            return true;
+        }),
+    ]
+};
 module.exports = {
-    registerValidation
+    loginValidation,
+    registerValidation,
 };

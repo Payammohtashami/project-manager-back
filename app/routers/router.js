@@ -8,8 +8,8 @@ const router = Router();
 
 
 router.use('/auth', authRoutes);
+router.use('/user', userRoutes);
 // router.use('/team', teamRoutes);
-// router.use('/user', userRoutes);
 // router.use('/project', projectRoutes);
 
 module.exports = router;
