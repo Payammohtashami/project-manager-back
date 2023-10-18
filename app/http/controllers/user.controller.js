@@ -5,6 +5,7 @@ class UserController {
     getProfile(req, res, next){
         try {
             const user = req.user;
+            user.profile_image = req.protocol + '://' + req.get('host') + '/' + user.profile_image.replace(/[\\\\]/gm, '/');
             return res.status(200).json({
                 data: user,
                 status: 200,

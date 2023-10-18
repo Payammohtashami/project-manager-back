@@ -10,7 +10,7 @@ const router = Router();
 
 router.use('/auth', authRoutes);
 router.use('/user', checkLogin, userRoutes);
+router.use('/project', projectRoutes);
 // router.use('/team', teamRoutes);
-// router.use('/project', projectRoutes);
 
 module.exports = router;
