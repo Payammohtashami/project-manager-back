@@ -9,6 +9,7 @@ const UserSchema = new mongoose.Schema(
         role: {type: [String], default: ['USER']},
         email: {type: String, required: true, unique: true},
         password: {type: String, unique: true},
+        profile_image: {type: String},
         skills: {type: [String], default: []},
         teams: {type: [mongoose.Types.ObjectId], default: []},
     },
