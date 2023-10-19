@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ProjetcSchema = new mongoose.Schema(
+const ProjectSchema = new mongoose.Schema(
     {
         text: {type: String},
         team: {type: mongoose.Types.ObjectId},
@@ -14,7 +14,7 @@ const ProjetcSchema = new mongoose.Schema(
     }
 );
 
-const ProjetcModel = mongoose.model('projetc', ProjetcSchema);
+const ProjectModel = mongoose.model('project', ProjectSchema);
 module.exports = {
-    ProjetcModel,
+    ProjectModel,
 };

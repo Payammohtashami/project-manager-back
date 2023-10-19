@@ -1,7 +1,7 @@
 const { body } = require("express-validator");
 const { UserModel } = require("../../models/user.model");
 
-function registerValidation(){
+function registerValidator(){
     return [
         body('username').notEmpty().isLength({min: 4, max: 24}).custom(async (value, ctx) => {
             if(value) {
@@ -33,7 +33,7 @@ function registerValidation(){
     ];
 };
 
-function loginValidation(){
+function loginValidator(){
     return [
         body('username').notEmpty().withMessage('نام کاربری نمی تواند خالی باشد').custom(async (value, ctx) => {
             if(value) {
@@ -50,6 +50,6 @@ function loginValidation(){
     ]
 };
 module.exports = {
-    loginValidation,
-    registerValidation,
+    loginValidator,
+    registerValidator,
 };

@@ -1,6 +1,6 @@
 const uploadMulter = require('../modules/multer');
 const { UserController } = require('../http/controllers/user.controller');
-const { imageValidator } = require('../http/validations/user.validation');
+const { imageValidator } = require('../http/validations/user.validator');
 const { expressValidatorsMapper } = require('../http/middlewares/check-error');
 
 const router = require('express').Router();
