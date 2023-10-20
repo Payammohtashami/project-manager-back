@@ -43,9 +43,14 @@ function createPathDirectory(){
     return path.join("public", "upload", Year, Month, Day);
 };
 
+function createLinkForFiles(req, fileAddress){
+    return req.protocol + '://' + req.get('host') + '/' + fileAddress.replace(/[\\\\]/gm, '/')
+};
+
 module.exports = {
     hashString,
     tokenVerify,
     tokenGenerator,
+    createLinkForFiles,
     createPathDirectory,
 };

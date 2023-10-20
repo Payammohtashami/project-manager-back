@@ -1,8 +1,9 @@
+const { default: omitEmpty } = require('omit-empty');
 const { ProjectModel } = require('../../models/project.model');
+const { createLinkForFiles } = require('../../modules/functions');
 
 class ProjectController {
     async createProject(req, res, next){
-        console.log(req);
         try {
             const { title, text, image, tags } = req.body;
             const owner = req.user._id;
@@ -25,6 +26,9 @@ class ProjectController {
         try {
             const owner = req.user._id;
             const projects = await ProjectModel.find({owner});
+            for(const project of projects){
+                project.image = createLinkForFiles(req, project.image);
+            }
             return res.status(200).json({
                 status: 200,
                 data: projects,
@@ -39,6 +43,7 @@ class ProjectController {
             const owner = req.user._id;
             const projectId = req.params.id;
             const project = await ProjectModel.findOne({owner, _id: projectId});
+            project.image = createLinkForFiles(req,project.image);
             if(!project) throw {
                 status: 404,
                 message: 'پروژه یافت نشد',
@@ -74,20 +79,69 @@ class ProjectController {
             next(error);
         }
     };
+    
+    async updateProject(req, res, next){
+        try {
+            let data = omitEmpty(req.body);
+            const owner = req.user._id;
+            const projectId = req.params.id;
+            const project = await ProjectModel.findOne({owner, _id: projectId});
+            if(!project) throw {
+                status: 404,
+                message: 'پروژه یافت نشد',
+            };
+            Object.entries(data).forEach(([key, value]) => {
+                if(!['title', 'tags', 'text'].includes(key)) delete data[key];
+            });
+            const updateResult = await ProjectModel.updateOne({_id: projectId}, {$set: data});
+            if(updateResult.matchedCount === 0) throw {
+                message: 'بروزرسانی انجام نشد',
+                status: 400,
+            };
+            return res.status(201).json({
+                status: 201,
+                message: 'بروزرسانی با موفقیت انجام شد',
+                data,
+            })
+        } catch (error) {
+            next(error)
+        }
+    };
+    async updateProjectImage(req, res, next){
+        try {
+            let { image } = req.body;
+            const owner = req.user._id;
+            const projectId = req.params.id;
+            const project = await ProjectModel.findOne({owner, _id: projectId});
+            if(!project) throw {
+                status: 404,
+                message: 'پروژه یافت نشد',
+            };
+           
+            const updateResult = await ProjectModel.updateOne({_id: projectId}, {$set: {image}});
+            if(updateResult.matchedCount === 0) throw {
+                message: 'بروزرسانی انجام نشد',
+                status: 400,
+            };
+            return res.status(201).json({
+                status: 201,
+                message: 'بروزرسانی با موفقیت انجام شد',
+                data,
+            })
+        } catch (error) {
+            next(error)
+        }
+    };
 
-    getProjectByTeam(){
+    async getProjectByTeam(){
 
     };
 
-    getAllProjectsByTeam(){
+    async getAllProjectsByTeam(){
 
     };
 
-    getProjectOfUser(){
-
-    };
-
-    updateProject(){
+    async getProjectOfUser(){
 
     };
 };
