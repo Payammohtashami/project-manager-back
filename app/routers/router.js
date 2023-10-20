@@ -11,6 +11,6 @@ const router = Router();
 router.use('/auth', authRoutes);
 router.use('/user', checkLogin, userRoutes);
 router.use('/project', checkLogin, projectRoutes);
-router.use('/team', teamRoutes);
+router.use('/team', checkLogin, teamRoutes);
 
 module.exports = router;
