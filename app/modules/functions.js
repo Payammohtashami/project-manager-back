@@ -44,6 +44,7 @@ function createPathDirectory(){
 };
 
 function createLinkForFiles(req, fileAddress){
+    if(!fileAddress) return null; 
     return req.protocol + '://' + req.get('host') + '/' + fileAddress.replace(/[\\\\]/gm, '/')
 };
 

@@ -1,10 +1,10 @@
 ### get user profile
 GET http://localhost:4000/user/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBheUBhbTMiLCJpYXQiOjE2OTc2MTA5MTIsImV4cCI6MTcwMDIwMjkxMn0.Xaz7L6NJYpFXhQLeGcmkH1yHUk9MaWnmX2WJ7jManGY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBheWFtNiIsImlhdCI6MTY5Nzg3NTE0MSwiZXhwIjoxNzAwNDY3MTQxfQ.CwnlGFmZ1LAQUH43jVDamUjafs4653fM7HZOhpQqxEM
 
 ### edit user profile
 PUT http://localhost:4000/user/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBheUBhbTMiLCJpYXQiOjE2OTc2MTA5MTIsImV4cCI6MTcwMDIwMjkxMn0.Xaz7L6NJYpFXhQLeGcmkH1yHUk9MaWnmX2WJ7jManGY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBheWFtNiIsImlhdCI6MTY5Nzg3NTE0MSwiZXhwIjoxNzAwNDY3MTQxfQ.CwnlGFmZ1LAQUH43jVDamUjafs4653fM7HZOhpQqxEM
 Content-Type: application/json
 
 {
@@ -12,3 +12,8 @@ Content-Type: application/json
     "last_name": "mohtashami",
     "skills": []
 }
+
+### accept request
+PUT http://localhost:4000/user/change-status-request/ACCEPTED/653384a50251fd3ace67a130
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBheWFtNiIsImlhdCI6MTY5Nzg3NTE0MSwiZXhwIjoxNzAwNDY3MTQxfQ.CwnlGFmZ1LAQUH43jVDamUjafs4653fM7HZOhpQqxEM
+Content-Type: application/json

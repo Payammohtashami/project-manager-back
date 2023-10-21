@@ -22,4 +22,6 @@ router.put(
     expressValidatorsMapper,
     UserController.uploadProfileImage,
 );
+
+router.put('/change-status-request/:status/:id', expressValidatorsMapper, UserController.changeStatusRequest)
 module.exports = router;

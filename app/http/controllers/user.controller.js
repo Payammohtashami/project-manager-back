@@ -65,8 +65,33 @@ class UserController {
 
     };
 
-    acceptInviteInTeam(){
-
+    async changeStatusRequest(req, res, next){
+        try {
+            const { id, status } = req.params;
+            const request = await UserModel.findOne({"inviteRequest._id": id});
+            if(!request) throw { status: 404, message: 'درخواستی با این مشخصات یافت نشد', };
+            const findRequest = request.inviteRequest.find((item) => item?.id === id);
+            if(findRequest.status !== 'PENDING') throw { status: 400, message: 'این درخواست قبلا رد یا قبول شده است'};
+            if(!["ACCEPTED", "REJETED"].includes(status)) throw {
+                status: 400,
+                message: 'اطلاعات ارسال شده صحیح نمی باشد',
+            };
+            const updateResult = await UserModel.updateOne({'inviteRequest._id': id}, {
+                $set: {
+                    "inviteRequest.$.status": status
+                }
+            });
+            if(updateResult.modifiedCount === 0) throw {
+                status: 500,
+                message: 'تغییر درخواست عضویت انجام نشد',
+            };
+            return res.status(200).json({
+                status: 200,
+                message: 'تغییر درخواست وضعیت با موفقیت انجام شد',
+            });
+        } catch (error) {
+            next(error);
+        };
     };
 
     rejectInviteInTeam(){

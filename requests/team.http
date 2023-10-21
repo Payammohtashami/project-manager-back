@@ -15,7 +15,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhe
 Content-Type: application/json
 
 ###get team by id requests
-GET http://localhost:4000/team/65328a7bdd34a61cfa2736f8
+GET http://localhost:4000/team/6532b2fdb3d4af81d76a990a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBheWFtNCIsImlhdCI6MTY5NzgxMTAwNCwiZXhwIjoxNzAwNDAzMDA0fQ.BrLVivcd29TNKAhWu6Ry1RilYhgXz7rnaFUCUjiFiAw
+Content-Type: application/json
+
+###get my team by id requests
+GET http://localhost:4000/team/my-teams
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBheWFtNCIsImlhdCI6MTY5NzgxMTAwNCwiZXhwIjoxNzAwNDAzMDA0fQ.BrLVivcd29TNKAhWu6Ry1RilYhgXz7rnaFUCUjiFiAw
 Content-Type: application/json
 
@@ -27,4 +32,19 @@ Content-Type: application/json
 ###edit team by id requests
 PUT  http://localhost:4000/team/65328a7bdd34a61cfa2736f8
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBheWFtNCIsImlhdCI6MTY5NzgxMTAwNCwiZXhwIjoxNzAwNDAzMDA0fQ.BrLVivcd29TNKAhWu6Ry1RilYhgXz7rnaFUCUjiFiAw
+Content-Type: application/json
+
+###invite user to team
+GET  http://localhost:4000/team/invite/6532b2fdb3d4af81d76a990a/payam6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBheWFtNCIsImlhdCI6MTY5NzgxMTAwNCwiZXhwIjoxNzAwNDAzMDA0fQ.BrLVivcd29TNKAhWu6Ry1RilYhgXz7rnaFUCUjiFiAw
+Content-Type: application/json
+
+###invite user to team
+GET  http://localhost:4000/team/requests
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBheWFtNiIsImlhdCI6MTY5Nzg3NTE0MSwiZXhwIjoxNzAwNDY3MTQxfQ.CwnlGFmZ1LAQUH43jVDamUjafs4653fM7HZOhpQqxEM
+Content-Type: application/json
+
+###invite user to team
+GET  http://localhost:4000/team/requests/ACCEPTED
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBheWFtNiIsImlhdCI6MTY5Nzg3NTE0MSwiZXhwIjoxNzAwNDY3MTQxfQ.CwnlGFmZ1LAQUH43jVDamUjafs4653fM7HZOhpQqxEM
 Content-Type: application/json
